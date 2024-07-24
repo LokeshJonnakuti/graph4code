@@ -21,7 +21,9 @@ class Main{
 		for(int i=0;sc.hasNext();System.out.println(i)){
 			str=sc.next();i=map.size();
 			for(int k:map.keySet()){
-				if(map.get(k).contains(str))break;--i;
+				if(map.get(k).contains(str)){
+				    break;
+				}--i;
 			}
 		}
 		
