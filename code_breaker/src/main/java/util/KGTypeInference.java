@@ -1,5 +1,6 @@
 package util;
 
+import io.github.pixee.security.SystemCommand;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -70,7 +71,7 @@ public class KGTypeInference {
 		String cls = uri.substring(clsOffset + 1);
 		String pkg = uri.substring(prefix.length(), clsOffset);
 		
-		Process p = Runtime.getRuntime().exec(new String[] {"sh", pythonExe, pkg, cls});
+		Process p = SystemCommand.runCommand(Runtime.getRuntime(), new String[] {"sh", pythonExe, pkg, cls});
 		
 		BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		String typeName = prefix + r.readLine();
