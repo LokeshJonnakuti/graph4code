@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.MalformedURLException;
+import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
@@ -140,7 +141,7 @@ public class TurtleWrapper {
     }
 
 	private static File getFile(String req) throws IOException {
-		File F = File.createTempFile("turtle", ".py");
+		File F = Files.createTempFile("turtle", ".py").toFile();
 		// F.deleteOnExit();
 		TemporaryFile.stringToFile(F, req.replaceAll("^[%]", "#"));
 		return F;
