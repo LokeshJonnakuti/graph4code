@@ -233,10 +233,10 @@ public class TurtleGraphUtil {
 	}
 
 	public static Dataset toDataset(List<String> files) throws IOException, FileNotFoundException {
-		File rdfGraph = File.createTempFile("rdfGraph", ".ttl");
+		File rdfGraph = Files.createTempFile("rdfGraph", ".ttl").toFile();
 		//rdfGraph.deleteOnExit();
 		
-		File jsonLog = File.createTempFile("edges", ".json");
+		File jsonLog = Files.createTempFile("edges", ".json").toFile();
 		//jsonLog.deleteOnExit();
 		
 		Path dir = Files.createTempDirectory("rdf");
