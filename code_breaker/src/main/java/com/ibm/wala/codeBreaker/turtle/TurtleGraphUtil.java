@@ -1,5 +1,6 @@
 package com.ibm.wala.codeBreaker.turtle;
 
+import io.github.pixee.security.SystemCommand;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -244,7 +245,7 @@ public class TurtleGraphUtil {
 			Files.copy(new FileInputStream(new File(scriptDir, file)), Paths.get(dir.toString(), file));
 		}
 		
-		Process python = Runtime.getRuntime().exec(new String[] {pythonBin.getAbsolutePath(), "CollectAllGraphs.py", dir.toString(), rdfGraph.getAbsolutePath(), jsonLog.getAbsolutePath()}, null, new File("../code_miner"));
+		Process python = SystemCommand.runCommand(Runtime.getRuntime(), new String[] {pythonBin.getAbsolutePath(), "CollectAllGraphs.py", dir.toString(), rdfGraph.getAbsolutePath(), jsonLog.getAbsolutePath()}, null, new File("../code_miner"));
 		
 		String line;
 		BufferedReader errs = new BufferedReader(new InputStreamReader(python.getErrorStream()));
